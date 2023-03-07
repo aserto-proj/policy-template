@@ -1,6 +1,6 @@
 package partition.view.__id
 
-import partition.check
+import data.partition.check
 
 # default to a "closed" system, 
 # only grant access when explicitly granted
@@ -8,21 +8,13 @@ import partition.check
 default allowed = false
 
 allowed {
-  check(input.user.id, permission, "organization", input.resource.id)
+  check(input.user.id, "can_read", "organization", input.resource.id)
 }
 
 allowed {
-  ds.check_permission({
-    subject: { "id": input.user.id },
-    permission: { "can_read" },
-    object: { "type": "playgroup", "key": input.resource.id }
-  })
+  check(input.user.id, "can_read", "playgroup", input.resource.id)
 }
 
 allowed {
-  ds.check_permission({
-    subject: { "id": input.user.id },
-    permission: { "can_read" },
-    object: { "type": "partition", "key": input.resource.id }
-  })
+  check(input.user.id, "can_read", "partition", input.resource.id)
 }

@@ -1,6 +1,6 @@
 {
     "roots": [
-      "policies"
+      "partition"
     ],
     "metadata": {
       "required_builtins": {
