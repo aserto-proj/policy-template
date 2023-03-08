@@ -1,7 +1,7 @@
 package partition
 
-check(user_id, permission, obj_type, obj_key) {
-  ds.check_permission({
+check(user_id, permission, obj_type, obj_key) := result {
+  result := ds.check_permission({
     "subject": { "id": user_id },
     "permission": { "name": permission },
     "object": { "type": obj_type, "key": obj_key }
@@ -13,7 +13,7 @@ get_playgroup(partition) {
 }
 
 get_parent(object_type, key, relation, subject_type) := parent {
-  relations = ds.relation({
+  relations := ds.relation({
     "object": {
       "key": key,
       "type": object_type
@@ -27,6 +27,6 @@ get_parent(object_type, key, relation, subject_type) := parent {
     },
     "with_objects": true
   })
-  parent_id = relations.results[0].subject.id
-  parent = relations.objects[parent_id]
+  parent_id := relations.results[0].subject.id
+  parent := relations.objects[parent_id]
 }
