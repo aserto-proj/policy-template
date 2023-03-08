@@ -9,7 +9,7 @@ import data.vertex.check_organization
 
 default allowed = false
 
-permission := "can_view"
+permission := "can_read"
 
 allowed {
   check_partition(input.user.id, permission, input.resource.id)
