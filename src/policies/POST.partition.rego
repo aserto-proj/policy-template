@@ -1,4 +1,4 @@
-package partition.edit.__id
+package vertex.POST.partition
 
 import data.partition.check_partition
 import data.partition.check_playgroup
@@ -9,7 +9,7 @@ import data.partition.check_organization
 
 default allowed = false
 
-permission := "can_read"
+permission := "can_create"
 
 allowed {
   check_partition(input.user.id, permission, input.resource.id)
