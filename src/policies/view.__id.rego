@@ -19,7 +19,7 @@ allowed {
 
 allowed {
   pg := get_parent("partition", input.resource.id, "partition-playgroup", "playgroup")
-  org := get_parent("playgroup", pg.key, "playgroup-organization", "organization")
+  org := get_parent("playgroup", pg.key, "playgroup-org", "organization")
   check(input.user.id, "can_read", "organization", org.key)
 }
 
