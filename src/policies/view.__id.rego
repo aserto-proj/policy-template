@@ -1,6 +1,7 @@
 package partition.view.__id
 
 import data.partition.check
+import data.partition.get_parent
 
 # default to a "closed" system, 
 # only grant access when explicitly granted
@@ -8,13 +9,17 @@ import data.partition.check
 default allowed = false
 
 allowed {
-  check(input.user.id, "can_read", "organization", input.resource.id)
-}
-
-allowed {
-  check(input.user.id, "can_read", "playgroup", input.resource.id)
-}
-
-allowed {
   check(input.user.id, "can_read", "partition", input.resource.id)
 }
+
+allowed {
+  pg = get_parent(input.resource.id, "partition", "partition-playgroup", "playgroup")
+  check(input.user.id, "can_read", "playgroup", pg.id)
+}
+
+allowed {
+  pg = get_parent(input.resource.id, "partition", "partition-playgroup", "playgroup")
+  org = get_parent(pg, "playgroup", "playgroup-organization", "organization")
+  check(input.user.id, "can_read", "organization", org.id)
+}
+
