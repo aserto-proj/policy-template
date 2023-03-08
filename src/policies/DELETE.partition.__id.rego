@@ -1,8 +1,8 @@
 package vertex.DELETE.partition.__id
 
-import data.partition.check_partition
-import data.partition.check_playgroup
-import data.partition.check_organization
+import data.vertex.check_partition
+import data.vertex.check_playgroup
+import data.vertex.check_organization
 
 # default to a "closed" system, 
 # only grant access when explicitly granted

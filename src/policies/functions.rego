@@ -1,4 +1,4 @@
-package partition
+package vertex
 
 check_partition(user_id, permission, partition) := result {
   result := check(user_id, permission, "partition", partition)
