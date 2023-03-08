@@ -6,13 +6,13 @@ check_partition(user_id, permission, partition) := result {
 
 check_playgroup(user_id, permission, partition) := result {
   pg := get_parent("partition", partition, "partition-playgroup", "playgroup")
-  result := check(input.user.id, permission, "playgroup", pg.key)
+  result := check(user_id, permission, "playgroup", pg.key)
 }
 
 check_organization(user_id, permission, partition) := result {
   pg := get_parent("partition", partition, "partition-playgroup", "playgroup")
   org := get_parent("playgroup", pg.key, "playgroup-org", "organization")
-  result := check(input.user.id, permission, "organization", org.key)
+  result := check(user_id, permission, "organization", org.key)
 }
 
 check(user_id, permission, obj_type, obj_key) := result {
